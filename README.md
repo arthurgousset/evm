@@ -34,7 +34,7 @@ There are a few parameters to consider when estimating transaction fees:
 | [`maxPriorityFeePerGas`](https://github.com/ethereum/execution-apis/blob/7907424db935b93c2fe6a3c0faab943adebe8557/graphql.json#L1890C13-L1891C125) | Incentive fee (or tip) per unit of gas paid to validators for the transaction to be included in a block. Minimum 1 wei, in practice 2 gwei-ish on Ethereum (see [live gas estimator](https://www.blocknative.com/gas-estimator)).                                                                                                                                                                                                      | ETH per unit of gas (in wei) |
 | [`maxFeePerGas`](https://github.com/ethereum/execution-apis/blob/7907424db935b93c2fe6a3c0faab943adebe8557/graphql.json#L1878C13-L1879C111)         | Maximum fee per unit of gas the transaction is allowed to pay. This serves as an upper-bound, so if less is paid because the base fee is lower than expected, then at most the sum of $\text{base fee} + \text{incentive fee}$ is paid per unit of gas. This is a way a to protect users from paying too much because of inflated base fees. If this is lower than the current base fee, then the transaction can become unmarketable. | ETH per unit of gas (in wei) |
 
-[^1]`baseFeePerGas` is not a parameter specified by the user. It's a dynamic parameter given by the
+[^1]: `baseFeePerGas` is not a parameter specified by the user. It's a dynamic parameter given by the
 network that can change from block to block.
 
 There are useful RPC methods to help estimate transaction fees:
@@ -46,7 +46,7 @@ There are useful RPC methods to help estimate transaction fees:
 | [eth_maxPriorityFeePerGas](https://www.quicknode.com/docs/ethereum/eth_maxPriorityFeePerGas) | [`maxPriorityFeePerGas`](https://github.com/ethereum/execution-apis/blob/7907424db935b93c2fe6a3c0faab943adebe8557/graphql.json#L1890C13-L1891C125) | Incentive fee per unit of gas paid on the network, effectively $\text{total fee} - \text{base fee}$ or `eth_gasPrice` - `block.baseFeePerGas`.                                                                        |
 | [eth_gasPrice](https://www.quicknode.com/docs/ethereum/eth_gasPrice)                         | [`maxFeePerGas`](https://github.com/ethereum/execution-apis/blob/7907424db935b93c2fe6a3c0faab943adebe8557/graphql.json#L1878C13-L1879C111)         | Total fee (base fee + incentive fee) per unit of gas paid on the network at the moment. Useful to find out what incentive fee per unit of gas the market is currently paying.                                         |
 
-[^2]`block.baseFeePerGas` is not an RPC method. It's a field available on every past block (after
+[^2]: `block.baseFeePerGas` is not an RPC method. It's a field available on every past block (after
 the London hard fork).
 
 Once a transaction has been mined, a transaction receipt can be requested to inspect the actual
